@@ -31,7 +31,7 @@
   },
   "payload_hash_algorithm": "sha256(relative-posix-path + NUL + file-sha256 + LF, sorted by path)",
   "manifest_and_seal_excluded_from_payload_entries": true,
-  "payload_tree_sha256": "d29df0c63f100e7309a627899be5735a1f083f31066732f5339a7a57d8e73b3b",
+  "payload_tree_sha256": "7f0c8538b02056263889e9c25ffe685cdfd183cbaabf8f79d7d92a42b8cae2d4",
   "payload_files": [
     {"path": "CITATION.cff", "sha256": "47d401f53d97987429658fefb73b06113199fd113ac7dbcd683eee3652368004", "classification": "GENERATED"},
     {"path": "LICENSE", "sha256": "95e0e01053550bf8780d0872e312033eb0901a2c42993683e948b8368cac866d", "classification": "GENERATED"},
@@ -54,7 +54,7 @@
     {"path": "reproducibility/README.md", "sha256": "c69e22f210cd847f590a14d1fc6b79a0f720213a9994b7d2b249801c71398cbf", "classification": "GENERATED"},
     {"path": "reproducibility/verify_public_release.py", "sha256": "53091eb1975442f563d7718a6667a808c399fb6d1bee59c3281bdd70888bc9ec", "classification": "GENERATED"},
     {"path": "site/app.js", "sha256": "a98b41046275c076979eafe3aa3c67c3cfa295bc4395ce855d0687190fca2bd1", "classification": "GENERATED"},
-    {"path": "site/index.html", "sha256": "d798d2163ce3b0b0b7a5b7f83653dc17730dba38aff64d9c5da6ba4bc09ab04d", "classification": "GENERATED"},
-    {"path": "site/styles.css", "sha256": "71ec2a0242b476da0670e7c4c8a63d3e0d4c99b42831635e29c1a09c8484ce49", "classification": "GENERATED"}
+    {"path": "site/index.html", "sha256": "5fd1eaf13fb43246d0248407089194c4d0ec2f8b5281101731ed4fd46b4578e8", "classification": "GENERATED"},
+    {"path": "site/styles.css", "sha256": "bd2e568306567ba752f73fc9b2bed4779af280b71915f42991a0942edfa6a5ff", "classification": "GENERATED"}
   ]
 }
