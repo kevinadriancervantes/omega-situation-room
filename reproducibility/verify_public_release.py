@@ -13,6 +13,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 QUALIFIED_CANDIDATE_ID = "OMEGA_SITUATION_ROOM_QUALIFIED_CONTEST_CANDIDATE"
 QUALIFIED_CANDIDATE_STATUS = "QUALIFIED_CONTEST_CANDIDATE"
+PREVIEW_DEPLOYMENT_STATUS = "ACTIVE"
+PRODUCTION_MICROSITE_STATUS = "NOT_DEPLOYED"
+CUSTOM_DOMAIN_STATUS = "NOT_ATTACHED"
+SUBMISSION_STATUS = "NOT_SUBMITTED"
 PUBLIC_REPOSITORY = "https://github.com/kevinadriancervantes/omega-situation-room"
 ALLOWLIST = ROOT / "governance" / "public-release-allowlist.json"
 MANIFEST = ROOT / "governance" / "release-manifest.json"
@@ -148,12 +152,38 @@ def main() -> int:
         fail(errors, "manifest classification is not QUALIFIED_CONTEST_CANDIDATE")
     if seal.get("classification") != QUALIFIED_CANDIDATE_STATUS:
         fail(errors, "seal classification is not QUALIFIED_CONTEST_CANDIDATE")
-    if manifest.get("status", {}).get("submission_status") != "NOT_SUBMITTED":
+    manifest_status = manifest.get("status", {})
+    if manifest_status.get("submission_status") != SUBMISSION_STATUS:
         fail(errors, "manifest submission status is not NOT_SUBMITTED")
-    if manifest.get("status", {}).get("deployment_status") != "NOT_DEPLOYED":
-        fail(errors, "manifest deployment status is not NOT_DEPLOYED")
-    if seal.get("submission_status") != "NOT_SUBMITTED" or seal.get("deployment_status") != "NOT_DEPLOYED":
-        fail(errors, "seal status is not NOT_SUBMITTED / NOT_DEPLOYED")
+    if manifest_status.get("preview_deployment_status") != PREVIEW_DEPLOYMENT_STATUS:
+        fail(errors, "manifest preview deployment status is not ACTIVE")
+    if manifest_status.get("production_microsite_status") != PRODUCTION_MICROSITE_STATUS:
+        fail(errors, "manifest production microsite status is not NOT_DEPLOYED")
+    if manifest_status.get("custom_domain_status") != CUSTOM_DOMAIN_STATUS:
+        fail(errors, "manifest custom-domain status is not NOT_ATTACHED")
+    if "deployment_status" in manifest_status:
+        fail(errors, "manifest retains ambiguous deployment_status")
+    if seal.get("submission_status") != SUBMISSION_STATUS:
+        fail(errors, "seal submission status is not NOT_SUBMITTED")
+    if seal.get("preview_deployment_status") != PREVIEW_DEPLOYMENT_STATUS:
+        fail(errors, "seal preview deployment status is not ACTIVE")
+    if seal.get("production_microsite_status") != PRODUCTION_MICROSITE_STATUS:
+        fail(errors, "seal production microsite status is not NOT_DEPLOYED")
+    if seal.get("custom_domain_status") != CUSTOM_DOMAIN_STATUS:
+        fail(errors, "seal custom-domain status is not NOT_ATTACHED")
+    if "deployment_status" in seal:
+        fail(errors, "seal retains ambiguous deployment_status")
+    privacy_status = privacy
+    if privacy_status.get("submission_status") != SUBMISSION_STATUS:
+        fail(errors, "privacy receipt submission status is not NOT_SUBMITTED")
+    if privacy_status.get("preview_deployment_status") != PREVIEW_DEPLOYMENT_STATUS:
+        fail(errors, "privacy receipt preview deployment status is not ACTIVE")
+    if privacy_status.get("production_microsite_status") != PRODUCTION_MICROSITE_STATUS:
+        fail(errors, "privacy receipt production microsite status is not NOT_DEPLOYED")
+    if privacy_status.get("custom_domain_status") != CUSTOM_DOMAIN_STATUS:
+        fail(errors, "privacy receipt custom-domain status is not NOT_ATTACHED")
+    if "deployment_status" in privacy_status:
+        fail(errors, "privacy receipt retains ambiguous deployment_status")
     if privacy.get("status") != "PASS" or privacy.get("violations") != []:
         fail(errors, "privacy receipt is not a clean PASS")
     privacy_requirements = {
@@ -311,6 +341,8 @@ def main() -> int:
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     site = (ROOT / "site/index.html").read_text(encoding="utf-8")
+    readme_status_text = readme.upper()
+    site_status_text = site.upper()
     if "QUALIFIED CONTEST CANDIDATE" not in readme or "QUALIFIED CONTEST CANDIDATE" not in site:
         fail(errors, "qualified contest candidate status is missing from README and/or site")
     for stale in ("OMEGA_SITUATION_ROOM_LOCAL_QUALIFIED_CANDIDATE", "LOCAL_QUALIFIED_CANDIDATE", "LOCAL CANDIDATE"):
@@ -321,9 +353,11 @@ def main() -> int:
         "IMPLEMENTED_OR_UNDER_QUALIFICATION",
         "PROPOSED_CONTEST_EXPERIMENT",
         "NOT_SUBMITTED",
-        "NOT_DEPLOYED",
+        "PREVIEW_DEPLOYMENT_STATUS",
+        "PRODUCTION_MICROSITE_STATUS",
+        "CUSTOM_DOMAIN_STATUS",
     ):
-        if marker not in readme or marker not in site:
+        if marker not in readme_status_text or marker not in site_status_text:
             fail(errors, f"status marker missing from README and/or site: {marker}")
     for claim_id in ("PT-001", "PT-002", "PT-003", "IQ-001", "IQ-002", "PE-001", "PE-002"):
         if claim_id not in claims or claim_id not in readme or claim_id not in site:
@@ -370,8 +404,10 @@ def main() -> int:
     print(f"cff_validation=PASS_SEMANTIC_1.2.0")
     print(f"git_history_privacy={git_history_result}")
     print("claim_surface_reconciliation=PASS")
+    print("preview_deployment_status=ACTIVE")
+    print("production_microsite_status=NOT_DEPLOYED")
+    print("custom_domain_status=NOT_ATTACHED")
     print("submission_status=NOT_SUBMITTED")
-    print("deployment_status=NOT_DEPLOYED")
     return 0
 
 

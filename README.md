@@ -135,14 +135,17 @@ submission/deployment status.
 ```text
 CONTEST_SNAPSHOT = QUALIFIED_CONTEST_CANDIDATE
 REPOSITORY_ROLE = QUALIFIED_CONTEST_FACING_METHODOLOGY_AND_EVIDENCE_SNAPSHOT
-MICROSITE_TARGET = https://omega.midex.app
-MICROSITE_STATUS = NOT_DEPLOYED
+MICROSITE_TARGET = VERCEL_PREVIEW
+PREVIEW_DEPLOYMENT_STATUS = ACTIVE
+PRODUCTION_MICROSITE_STATUS = NOT_DEPLOYED
+CUSTOM_DOMAIN_STATUS = NOT_ATTACHED
 SUBMISSION_STATUS = NOT_SUBMITTED
 ```
 
 The GitHub repository is the contest-facing methodology and evidence artifact.
-No Vercel project, domain mapping, or ChinaTalk submission is created by this
-candidate.
+A Vercel preview is active for bounded hosted qualification only. It is not a
+production microsite, has no custom-domain mapping, and does not authorize or
+represent a ChinaTalk submission.
 
 ## Claim index
 

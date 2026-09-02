@@ -2,7 +2,9 @@
   "schema": "omega.situation-room.release-seal.v1",
   "classification": "QUALIFIED_CONTEST_CANDIDATE",
   "seal_algorithm": "sha256(UTF-8 bytes of release-manifest.json)",
-  "manifest_sha256": "e4408ed35cf2ec003d13cb484903d5be5eeaa3e98ce72a42731d9762f8015202",
+  "manifest_sha256": "63b36d96ac918f8b9374a731f7ac2b8d966c839e8ce60026c27125976ba9073d",
   "submission_status": "NOT_SUBMITTED",
-  "deployment_status": "NOT_DEPLOYED"
+  "preview_deployment_status": "ACTIVE",
+  "production_microsite_status": "NOT_DEPLOYED",
+  "custom_domain_status": "NOT_ATTACHED"
 }

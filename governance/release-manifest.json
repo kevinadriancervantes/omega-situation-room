@@ -20,8 +20,10 @@
   },
   "status": {
     "submission_status": "NOT_SUBMITTED",
-    "deployment_status": "NOT_DEPLOYED",
-    "microsite_target": "https://omega.midex.app"
+    "preview_deployment_status": "ACTIVE",
+    "production_microsite_status": "NOT_DEPLOYED",
+    "custom_domain_status": "NOT_ATTACHED",
+    "microsite_target": "VERCEL_PREVIEW"
   },
   "public_history": {
     "repository": "https://github.com/kevinadriancervantes/omega-situation-room",
@@ -32,11 +34,11 @@
   },
   "payload_hash_algorithm": "sha256(relative-posix-path + NUL + file-sha256 + LF, sorted by path)",
   "manifest_and_seal_excluded_from_payload_entries": true,
-  "payload_tree_sha256": "c9ba6f60bcceb03d0c462d11994b47994475900075a9a28616222bfe46c15f70",
+  "payload_tree_sha256": "042ba20257425421e0c0de495b57369bf7e426889a530ece4c1fdeb41a392bcf",
   "payload_files": [
     {"path": "CITATION.cff", "sha256": "b07881f9327b7f40c6a1d35d4822d1a194a370411109c3539c1fcc89a6bdee9b", "classification": "GENERATED"},
     {"path": "LICENSE", "sha256": "95e0e01053550bf8780d0872e312033eb0901a2c42993683e948b8368cac866d", "classification": "GENERATED"},
-    {"path": "README.md", "sha256": "74fb91aad56bef5374e823c45c320a9e1a45600045ab9950654181d6b381b7c5", "classification": "GENERATED"},
+    {"path": "README.md", "sha256": "6d6d0cc97b085814f983aebf0b9d2fb96b47a1207b4b5a7143bc68e5e627d3eb", "classification": "GENERATED"},
     {"path": "THIRD_PARTY_NOTICES.md", "sha256": "ec91bb01bd4fcf89f9d5177212db3fa270d75735d83d7525df416e587eddd76d", "classification": "GENERATED"},
     {"path": "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json", "sha256": "d063a34465397099bba2c07dbafb95c50ee319c3b396470fe292ea422ac3eda5", "classification": "DERIVED"},
     {"path": "evidence/README.md", "sha256": "c949b72d2b2ab83317b07d45e527c30c301c2afeb8873d6b475a812876be1410", "classification": "DERIVED"},
@@ -45,7 +47,7 @@
     {"path": "governance/CLAIMS.md", "sha256": "8cf8cb29b3e87b3bddd7be76a1d063403338f60e816d41a590811de725c38841", "classification": "GENERATED"},
     {"path": "governance/claim-surface-map.json", "sha256": "f47e9117cdc4fd4e25b5ca2b6a2b7775b403388dd81279ce81078149be0b11c7", "classification": "GENERATED"},
     {"path": "governance/privacy-policy.md", "sha256": "ab100efcec91bcccbe7f351d9464092fb330ffe4774b9bb12b55d0c816436ffa", "classification": "GENERATED"},
-    {"path": "governance/privacy-receipt.json", "sha256": "f7dc180f2c6359d16471d5257beabfd38c68c7d486b92f1aa1c823e563615a25", "classification": "GENERATED"},
+    {"path": "governance/privacy-receipt.json", "sha256": "59e242fa276e5b72769073f717219fd842a47147dea835e90305ba60f1c3f444", "classification": "GENERATED"},
     {"path": "governance/public-release-allowlist.json", "sha256": "ac43cfb73b67da4c22219de83d7f653bbac68f97e5049debbb4fd0719af43713", "classification": "GENERATED"},
     {"path": "protocol/ADJUDICATION.md", "sha256": "c8599b5b343fdd942f3a1618cf5789deef835029f0e13838af53d3e8cd28a309", "classification": "GENERATED"},
     {"path": "protocol/EVAL_SPEC.md", "sha256": "60fe785c5c0dfa04632956089f965b032b0904eb37c4a02017c8de20d5be0af6", "classification": "GENERATED"},
@@ -53,9 +55,9 @@
     {"path": "protocol/LIMITATIONS.md", "sha256": "f7fd390850ab8bfe1eb433e3f70d69873994bb17f7a5a63852950de3000da7a3", "classification": "GENERATED"},
     {"path": "protocol/METRICS.md", "sha256": "ed2bb7cbb00a6805f8c528f6d14891e78965773a057b83cc233960f94bcd2886", "classification": "GENERATED"},
     {"path": "reproducibility/README.md", "sha256": "c69e22f210cd847f590a14d1fc6b79a0f720213a9994b7d2b249801c71398cbf", "classification": "GENERATED"},
-    {"path": "reproducibility/verify_public_release.py", "sha256": "5fa2d3b4f6f00d3b058a5e3433e33daa3f8eec0c3991aaf86beddf6ea14ed21c", "classification": "GENERATED"},
+    {"path": "reproducibility/verify_public_release.py", "sha256": "da189fa6462ba89dea1228ba470c523419c5821cf888ccfc9422504ac5b8906b", "classification": "GENERATED"},
     {"path": "site/app.js", "sha256": "a98b41046275c076979eafe3aa3c67c3cfa295bc4395ce855d0687190fca2bd1", "classification": "GENERATED"},
-    {"path": "site/index.html", "sha256": "a72715fd08498bd0a1d02c5298bf332949d1b8a62bde0ffc48ac809befada893", "classification": "GENERATED"},
+    {"path": "site/index.html", "sha256": "212dbd72962a7a711f9532e6c069e8f74d6e30c1baf5e7862638140c98377ba9", "classification": "GENERATED"},
     {"path": "site/styles.css", "sha256": "bd2e568306567ba752f73fc9b2bed4779af280b71915f42991a0942edfa6a5ff", "classification": "GENERATED"}
   ]
 }

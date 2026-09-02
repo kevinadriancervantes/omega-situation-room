@@ -11,5 +11,7 @@
   "private_git_history_included": false,
   "violations": [],
   "submission_status": "NOT_SUBMITTED",
-  "deployment_status": "NOT_DEPLOYED"
+  "preview_deployment_status": "ACTIVE",
+  "production_microsite_status": "NOT_DEPLOYED",
+  "custom_domain_status": "NOT_ATTACHED"
 }
