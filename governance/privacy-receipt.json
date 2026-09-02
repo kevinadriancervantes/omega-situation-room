@@ -1,6 +1,6 @@
 {
   "schema": "omega.situation-room.privacy-receipt.v1",
-  "candidate_id": "OMEGA_SITUATION_ROOM_QUALIFIED_CONTEST_CANDIDATE",
+  "candidate_id": "OMEGA_SITUATION_ROOM_QUALIFIED_PUBLIC_EVALUATION_CANDIDATE",
   "scan_mode": "bounded deterministic candidate-tree audit",
   "status": "PASS",
   "raw_runtime_evidence_included": false,
@@ -10,8 +10,10 @@
   "proprietary_game_assets_included": false,
   "private_git_history_included": false,
   "violations": [],
-  "submission_status": "NOT_SUBMITTED",
+  "public_microsite_status": "ACTIVE",
+  "public_microsite_url": "https://omega-situation-room.vercel.app/",
+  "qualified_preview_status": "ACTIVE",
   "preview_deployment_status": "ACTIVE",
-  "production_microsite_status": "NOT_DEPLOYED",
-  "custom_domain_status": "NOT_ATTACHED"
+  "custom_domain_status": "NOT_ATTACHED",
+  "chinatalk_submission_status": "NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED"
 }

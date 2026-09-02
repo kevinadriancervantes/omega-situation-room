@@ -1,4 +1,4 @@
-"""Read-only verifier for the Omega Situation Room qualified contest candidate."""
+"""Read-only verifier for the Omega Situation Room public evaluation candidate."""
 
 from __future__ import annotations
 
@@ -11,12 +11,14 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-QUALIFIED_CANDIDATE_ID = "OMEGA_SITUATION_ROOM_QUALIFIED_CONTEST_CANDIDATE"
-QUALIFIED_CANDIDATE_STATUS = "QUALIFIED_CONTEST_CANDIDATE"
+QUALIFIED_CANDIDATE_ID = "OMEGA_SITUATION_ROOM_QUALIFIED_PUBLIC_EVALUATION_CANDIDATE"
+QUALIFIED_CANDIDATE_STATUS = "QUALIFIED_PUBLIC_EVALUATION_CANDIDATE"
+PUBLIC_MICROSITE_STATUS = "ACTIVE"
+PUBLIC_MICROSITE_URL = "https://omega-situation-room.vercel.app/"
+QUALIFIED_PREVIEW_STATUS = "ACTIVE"
 PREVIEW_DEPLOYMENT_STATUS = "ACTIVE"
-PRODUCTION_MICROSITE_STATUS = "NOT_DEPLOYED"
 CUSTOM_DOMAIN_STATUS = "NOT_ATTACHED"
-SUBMISSION_STATUS = "NOT_SUBMITTED"
+CHINATALK_SUBMISSION_STATUS = "NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED"
 PUBLIC_REPOSITORY = "https://github.com/kevinadriancervantes/omega-situation-room"
 ALLOWLIST = ROOT / "governance" / "public-release-allowlist.json"
 MANIFEST = ROOT / "governance" / "release-manifest.json"
@@ -147,43 +149,33 @@ def main() -> int:
         if document.get("candidate_id") != QUALIFIED_CANDIDATE_ID:
             fail(errors, f"{label} candidate ID is not {QUALIFIED_CANDIDATE_ID}")
     if allow.get("status") != QUALIFIED_CANDIDATE_STATUS:
-        fail(errors, "allowlist status is not QUALIFIED_CONTEST_CANDIDATE")
+        fail(errors, "allowlist status is not QUALIFIED_PUBLIC_EVALUATION_CANDIDATE")
     if manifest.get("classification") != QUALIFIED_CANDIDATE_STATUS:
-        fail(errors, "manifest classification is not QUALIFIED_CONTEST_CANDIDATE")
+        fail(errors, "manifest classification is not QUALIFIED_PUBLIC_EVALUATION_CANDIDATE")
     if seal.get("classification") != QUALIFIED_CANDIDATE_STATUS:
-        fail(errors, "seal classification is not QUALIFIED_CONTEST_CANDIDATE")
+        fail(errors, "seal classification is not QUALIFIED_PUBLIC_EVALUATION_CANDIDATE")
     manifest_status = manifest.get("status", {})
-    if manifest_status.get("submission_status") != SUBMISSION_STATUS:
-        fail(errors, "manifest submission status is not NOT_SUBMITTED")
-    if manifest_status.get("preview_deployment_status") != PREVIEW_DEPLOYMENT_STATUS:
-        fail(errors, "manifest preview deployment status is not ACTIVE")
-    if manifest_status.get("production_microsite_status") != PRODUCTION_MICROSITE_STATUS:
-        fail(errors, "manifest production microsite status is not NOT_DEPLOYED")
-    if manifest_status.get("custom_domain_status") != CUSTOM_DOMAIN_STATUS:
-        fail(errors, "manifest custom-domain status is not NOT_ATTACHED")
-    if "deployment_status" in manifest_status:
-        fail(errors, "manifest retains ambiguous deployment_status")
-    if seal.get("submission_status") != SUBMISSION_STATUS:
-        fail(errors, "seal submission status is not NOT_SUBMITTED")
-    if seal.get("preview_deployment_status") != PREVIEW_DEPLOYMENT_STATUS:
-        fail(errors, "seal preview deployment status is not ACTIVE")
-    if seal.get("production_microsite_status") != PRODUCTION_MICROSITE_STATUS:
-        fail(errors, "seal production microsite status is not NOT_DEPLOYED")
-    if seal.get("custom_domain_status") != CUSTOM_DOMAIN_STATUS:
-        fail(errors, "seal custom-domain status is not NOT_ATTACHED")
-    if "deployment_status" in seal:
-        fail(errors, "seal retains ambiguous deployment_status")
-    privacy_status = privacy
-    if privacy_status.get("submission_status") != SUBMISSION_STATUS:
-        fail(errors, "privacy receipt submission status is not NOT_SUBMITTED")
-    if privacy_status.get("preview_deployment_status") != PREVIEW_DEPLOYMENT_STATUS:
-        fail(errors, "privacy receipt preview deployment status is not ACTIVE")
-    if privacy_status.get("production_microsite_status") != PRODUCTION_MICROSITE_STATUS:
-        fail(errors, "privacy receipt production microsite status is not NOT_DEPLOYED")
-    if privacy_status.get("custom_domain_status") != CUSTOM_DOMAIN_STATUS:
-        fail(errors, "privacy receipt custom-domain status is not NOT_ATTACHED")
-    if "deployment_status" in privacy_status:
-        fail(errors, "privacy receipt retains ambiguous deployment_status")
+    expected_public_status = {
+        "public_microsite_status": PUBLIC_MICROSITE_STATUS,
+        "public_microsite_url": PUBLIC_MICROSITE_URL,
+        "qualified_preview_status": QUALIFIED_PREVIEW_STATUS,
+        "preview_deployment_status": PREVIEW_DEPLOYMENT_STATUS,
+        "custom_domain_status": CUSTOM_DOMAIN_STATUS,
+        "chinatalk_submission_status": CHINATALK_SUBMISSION_STATUS,
+    }
+    for key, expected in expected_public_status.items():
+        if manifest_status.get(key) != expected:
+            fail(errors, f"manifest {key} is not {expected}")
+    for key in ("deployment_status", "production_microsite_status", "submission_status", "microsite_target"):
+        if key in manifest_status:
+            fail(errors, f"manifest retains obsolete or ambiguous {key}")
+    for label, document in (("seal", seal), ("privacy receipt", privacy)):
+        for key, expected in expected_public_status.items():
+            if document.get(key) != expected:
+                fail(errors, f"{label} {key} is not {expected}")
+        for key in ("deployment_status", "production_microsite_status", "submission_status", "microsite_target"):
+            if key in document:
+                fail(errors, f"{label} retains obsolete or ambiguous {key}")
     if privacy.get("status") != "PASS" or privacy.get("violations") != []:
         fail(errors, "privacy receipt is not a clean PASS")
     privacy_requirements = {
@@ -343,8 +335,8 @@ def main() -> int:
     site = (ROOT / "site/index.html").read_text(encoding="utf-8")
     readme_status_text = readme.upper()
     site_status_text = site.upper()
-    if "QUALIFIED CONTEST CANDIDATE" not in readme or "QUALIFIED CONTEST CANDIDATE" not in site:
-        fail(errors, "qualified contest candidate status is missing from README and/or site")
+    if "QUALIFIED PUBLIC EVALUATION CANDIDATE" not in readme or "QUALIFIED PUBLIC EVALUATION CANDIDATE" not in site:
+        fail(errors, "qualified public evaluation candidate status is missing from README and/or site")
     for stale in ("OMEGA_SITUATION_ROOM_LOCAL_QUALIFIED_CANDIDATE", "LOCAL_QUALIFIED_CANDIDATE", "LOCAL CANDIDATE"):
         if stale in readme or stale in site:
             fail(errors, f"stale current-state candidate marker remains in README or site: {stale}")
@@ -353,9 +345,13 @@ def main() -> int:
         "IMPLEMENTED_OR_UNDER_QUALIFICATION",
         "PROPOSED_CONTEST_EXPERIMENT",
         "NOT_SUBMITTED",
+        "CANDIDATE_CLASSIFICATION",
+        "PUBLIC_MICROSITE_STATUS",
+        "PUBLIC_MICROSITE_URL",
+        "QUALIFIED_PREVIEW_STATUS",
         "PREVIEW_DEPLOYMENT_STATUS",
-        "PRODUCTION_MICROSITE_STATUS",
         "CUSTOM_DOMAIN_STATUS",
+        "SUBMISSION_WINDOW_CLOSED",
     ):
         if marker not in readme_status_text or marker not in site_status_text:
             fail(errors, f"status marker missing from README and/or site: {marker}")
@@ -404,10 +400,12 @@ def main() -> int:
     print(f"cff_validation=PASS_SEMANTIC_1.2.0")
     print(f"git_history_privacy={git_history_result}")
     print("claim_surface_reconciliation=PASS")
+    print("public_microsite_status=ACTIVE")
+    print(f"public_microsite_url={PUBLIC_MICROSITE_URL}")
+    print("qualified_preview_status=ACTIVE")
     print("preview_deployment_status=ACTIVE")
-    print("production_microsite_status=NOT_DEPLOYED")
     print("custom_domain_status=NOT_ATTACHED")
-    print("submission_status=NOT_SUBMITTED")
+    print("chinatalk_submission_status=NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED")
     return 0
 
 

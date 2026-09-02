@@ -1,6 +1,6 @@
 # Omega Situation Room
 
-## QUALIFIED CONTEST CANDIDATE — NOT DEPLOYED, NOT SUBMITTED
+## QUALIFIED PUBLIC EVALUATION CANDIDATE
 
 Omega Situation Room is a proposed methodology package for evaluating whether
 model-mediated systems remain governable during long-horizon decisions under
@@ -133,19 +133,22 @@ submission/deployment status.
 ## Contest and microsite status
 
 ```text
-CONTEST_SNAPSHOT = QUALIFIED_CONTEST_CANDIDATE
-REPOSITORY_ROLE = QUALIFIED_CONTEST_FACING_METHODOLOGY_AND_EVIDENCE_SNAPSHOT
-MICROSITE_TARGET = VERCEL_PREVIEW
+CANDIDATE_CLASSIFICATION = QUALIFIED_PUBLIC_EVALUATION_CANDIDATE
+REPOSITORY_ROLE = QUALIFIED_PUBLIC_METHODOLOGY_AND_EVIDENCE_SNAPSHOT
+PUBLIC_MICROSITE_STATUS = ACTIVE
+PUBLIC_MICROSITE_URL = https://omega-situation-room.vercel.app/
+QUALIFIED_PREVIEW_STATUS = ACTIVE
 PREVIEW_DEPLOYMENT_STATUS = ACTIVE
-PRODUCTION_MICROSITE_STATUS = NOT_DEPLOYED
 CUSTOM_DOMAIN_STATUS = NOT_ATTACHED
-SUBMISSION_STATUS = NOT_SUBMITTED
+CHINATALK_SUBMISSION_STATUS = NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED
 ```
 
-The GitHub repository is the contest-facing methodology and evidence artifact.
-A Vercel preview is active for bounded hosted qualification only. It is not a
-production microsite, has no custom-domain mapping, and does not authorize or
-represent a ChinaTalk submission.
+The GitHub repository is a public methodology and evidence artifact. A public
+Vercel microsite is active at the generated project URL, with the qualified
+preview state retained as an active reference. The custom domain is not
+attached. The ChinaTalk submission window is closed and this artifact was not
+submitted; the experiment remains proposed and no validated strategic result
+is claimed.
 
 ## Claim index
 
