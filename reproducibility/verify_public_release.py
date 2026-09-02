@@ -14,10 +14,13 @@ ROOT = Path(__file__).resolve().parents[1]
 QUALIFIED_CANDIDATE_ID = "OMEGA_SITUATION_ROOM_QUALIFIED_PUBLIC_EVALUATION_CANDIDATE"
 QUALIFIED_CANDIDATE_STATUS = "QUALIFIED_PUBLIC_EVALUATION_CANDIDATE"
 PUBLIC_MICROSITE_STATUS = "ACTIVE"
-PUBLIC_MICROSITE_URL = "https://omega-situation-room.vercel.app/"
+PUBLIC_MICROSITE_URL = "https://omega.midex.app/"
+CANONICAL_PUBLIC_MICROSITE_STATUS = "ACTIVE"
+CANONICAL_PUBLIC_MICROSITE_URL = "https://omega.midex.app/"
+VERCEL_PROJECT_URL = "https://omega-situation-room.vercel.app/"
 QUALIFIED_PREVIEW_STATUS = "ACTIVE"
 PREVIEW_DEPLOYMENT_STATUS = "ACTIVE"
-CUSTOM_DOMAIN_STATUS = "NOT_ATTACHED"
+CUSTOM_DOMAIN_STATUS = "ATTACHED_AND_QUALIFIED"
 CHINATALK_SUBMISSION_STATUS = "NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED"
 PUBLIC_REPOSITORY = "https://github.com/kevinadriancervantes/omega-situation-room"
 ALLOWLIST = ROOT / "governance" / "public-release-allowlist.json"
@@ -158,6 +161,9 @@ def main() -> int:
     expected_public_status = {
         "public_microsite_status": PUBLIC_MICROSITE_STATUS,
         "public_microsite_url": PUBLIC_MICROSITE_URL,
+        "canonical_public_microsite_status": CANONICAL_PUBLIC_MICROSITE_STATUS,
+        "canonical_public_microsite_url": CANONICAL_PUBLIC_MICROSITE_URL,
+        "vercel_project_url": VERCEL_PROJECT_URL,
         "qualified_preview_status": QUALIFIED_PREVIEW_STATUS,
         "preview_deployment_status": PREVIEW_DEPLOYMENT_STATUS,
         "custom_domain_status": CUSTOM_DOMAIN_STATUS,
@@ -218,8 +224,8 @@ def main() -> int:
     repository_match = re.search(r"(?m)^repository-code:\s*[\"']?([^\"'\s]+)[\"']?\s*$", cff)
     if not repository_match or repository_match.group(1) != PUBLIC_REPOSITORY:
         fail(errors, "CFF repository-code is not the qualified contest repository")
-    if re.search(r"(?im)^\s*url:\s*https://omega\.midex\.app\s*$", cff):
-        fail(errors, "CFF represents the undeployed omega.midex.app as an existing URL")
+    if not re.search(r"(?im)^\s*url:\s*[\"']?https://omega\.midex\.app/[\"']?\s*$", cff):
+        fail(errors, "CFF canonical URL is not https://omega.midex.app/")
     if re.search(r"(?i)(TBD|REPLACE_ME|example\.com)", cff):
         fail(errors, "CFF contains a future or placeholder value")
 
@@ -348,13 +354,20 @@ def main() -> int:
         "CANDIDATE_CLASSIFICATION",
         "PUBLIC_MICROSITE_STATUS",
         "PUBLIC_MICROSITE_URL",
+        "CANONICAL_PUBLIC_MICROSITE_STATUS",
+        "CANONICAL_PUBLIC_MICROSITE_URL",
+        "VERCEL_PROJECT_URL",
         "QUALIFIED_PREVIEW_STATUS",
         "PREVIEW_DEPLOYMENT_STATUS",
         "CUSTOM_DOMAIN_STATUS",
+        "ATTACHED_AND_QUALIFIED",
         "SUBMISSION_WINDOW_CLOSED",
     ):
         if marker not in readme_status_text or marker not in site_status_text:
             fail(errors, f"status marker missing from README and/or site: {marker}")
+    for url in (CANONICAL_PUBLIC_MICROSITE_URL, VERCEL_PROJECT_URL):
+        if url not in readme or url not in site:
+            fail(errors, f"public URL missing from README and/or site: {url}")
     for claim_id in ("PT-001", "PT-002", "PT-003", "IQ-001", "IQ-002", "PE-001", "PE-002"):
         if claim_id not in claims or claim_id not in readme or claim_id not in site:
             fail(errors, f"claim ID not reconciled across ledger, README, and site: {claim_id}")
@@ -404,7 +417,7 @@ def main() -> int:
     print(f"public_microsite_url={PUBLIC_MICROSITE_URL}")
     print("qualified_preview_status=ACTIVE")
     print("preview_deployment_status=ACTIVE")
-    print("custom_domain_status=NOT_ATTACHED")
+    print(f"custom_domain_status={CUSTOM_DOMAIN_STATUS}")
     print("chinatalk_submission_status=NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED")
     return 0
 

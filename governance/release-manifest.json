@@ -20,10 +20,13 @@
   },
   "status": {
     "public_microsite_status": "ACTIVE",
-    "public_microsite_url": "https://omega-situation-room.vercel.app/",
+    "public_microsite_url": "https://omega.midex.app/",
+    "canonical_public_microsite_status": "ACTIVE",
+    "canonical_public_microsite_url": "https://omega.midex.app/",
+    "vercel_project_url": "https://omega-situation-room.vercel.app/",
     "qualified_preview_status": "ACTIVE",
     "preview_deployment_status": "ACTIVE",
-    "custom_domain_status": "NOT_ATTACHED",
+    "custom_domain_status": "ATTACHED_AND_QUALIFIED",
     "chinatalk_submission_status": "NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED"
   },
   "public_history": {
@@ -35,11 +38,11 @@
   },
   "payload_hash_algorithm": "sha256(relative-posix-path + NUL + file-sha256 + LF, sorted by path)",
   "manifest_and_seal_excluded_from_payload_entries": true,
-  "payload_tree_sha256": "eb2d5d8c160063f643d153d602decf935e24fc433d8416e00e9cd2129685d9af",
+  "payload_tree_sha256": "bdd7017570a24bb567c01f0e1808807c144d68811237143001e31d38481003b0",
   "payload_files": [
-    {"path": "CITATION.cff", "sha256": "78e0115a9f1f4833212f1f3c1c138060c661793511dfbf1d0e8b0ebf87c2e422", "classification": "GENERATED"},
+    {"path": "CITATION.cff", "sha256": "915fb10b44b9d4f763227cbbc8a01b61ad8b9ab37966dcd650bb42b9a5eec5ea", "classification": "GENERATED"},
     {"path": "LICENSE", "sha256": "95e0e01053550bf8780d0872e312033eb0901a2c42993683e948b8368cac866d", "classification": "GENERATED"},
-    {"path": "README.md", "sha256": "c41bc303dd16481407d66ce6a33eb7b1a07101483f96b316ee1d17a947b612d6", "classification": "GENERATED"},
+    {"path": "README.md", "sha256": "091df8d96743dedd3406fc421ff1bedc98add8bdcb07724b6cd44880c6b340ec", "classification": "GENERATED"},
     {"path": "THIRD_PARTY_NOTICES.md", "sha256": "ec91bb01bd4fcf89f9d5177212db3fa270d75735d83d7525df416e587eddd76d", "classification": "GENERATED"},
     {"path": "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json", "sha256": "d063a34465397099bba2c07dbafb95c50ee319c3b396470fe292ea422ac3eda5", "classification": "DERIVED"},
     {"path": "evidence/README.md", "sha256": "c949b72d2b2ab83317b07d45e527c30c301c2afeb8873d6b475a812876be1410", "classification": "DERIVED"},
@@ -48,7 +51,7 @@
     {"path": "governance/CLAIMS.md", "sha256": "8cf8cb29b3e87b3bddd7be76a1d063403338f60e816d41a590811de725c38841", "classification": "GENERATED"},
     {"path": "governance/claim-surface-map.json", "sha256": "f47e9117cdc4fd4e25b5ca2b6a2b7775b403388dd81279ce81078149be0b11c7", "classification": "GENERATED"},
     {"path": "governance/privacy-policy.md", "sha256": "ab100efcec91bcccbe7f351d9464092fb330ffe4774b9bb12b55d0c816436ffa", "classification": "GENERATED"},
-    {"path": "governance/privacy-receipt.json", "sha256": "c135ff6a206ca8b9cf4af0b93afd1c576ae995a37d37ea497b2bb75482208302", "classification": "GENERATED"},
+    {"path": "governance/privacy-receipt.json", "sha256": "693bcabaffa7edfee7844f770d69b0f79673d769fff11434805a3e39a2cbbc0e", "classification": "GENERATED"},
     {"path": "governance/public-release-allowlist.json", "sha256": "c400faff62632eeb59603ca33e3d2b2460d60a548065176255d34a10a7a199b8", "classification": "GENERATED"},
     {"path": "protocol/ADJUDICATION.md", "sha256": "c8599b5b343fdd942f3a1618cf5789deef835029f0e13838af53d3e8cd28a309", "classification": "GENERATED"},
     {"path": "protocol/EVAL_SPEC.md", "sha256": "60fe785c5c0dfa04632956089f965b032b0904eb37c4a02017c8de20d5be0af6", "classification": "GENERATED"},
@@ -56,9 +59,9 @@
     {"path": "protocol/LIMITATIONS.md", "sha256": "f7fd390850ab8bfe1eb433e3f70d69873994bb17f7a5a63852950de3000da7a3", "classification": "GENERATED"},
     {"path": "protocol/METRICS.md", "sha256": "ed2bb7cbb00a6805f8c528f6d14891e78965773a057b83cc233960f94bcd2886", "classification": "GENERATED"},
     {"path": "reproducibility/README.md", "sha256": "c69e22f210cd847f590a14d1fc6b79a0f720213a9994b7d2b249801c71398cbf", "classification": "GENERATED"},
-    {"path": "reproducibility/verify_public_release.py", "sha256": "1e2de60971903a3dd442789a2a39a84cbaaf2f46f7c129a74d3329d5466a645c", "classification": "GENERATED"},
+    {"path": "reproducibility/verify_public_release.py", "sha256": "b620b90c7abc774dd8959b02ecca84797c949f6dd03734662aac1a2fc7f58d59", "classification": "GENERATED"},
     {"path": "site/app.js", "sha256": "a98b41046275c076979eafe3aa3c67c3cfa295bc4395ce855d0687190fca2bd1", "classification": "GENERATED"},
-    {"path": "site/index.html", "sha256": "2c41734780847706d261b2cb8a3939f475ff84c8169512af15251a3855c0bba7", "classification": "GENERATED"},
+    {"path": "site/index.html", "sha256": "00b40055d87a19ab033e59f0f244279c2c44135667849c0b1802c415dae9e70e", "classification": "GENERATED"},
     {"path": "site/styles.css", "sha256": "bd2e568306567ba752f73fc9b2bed4779af280b71915f42991a0942edfa6a5ff", "classification": "GENERATED"}
   ]
 }

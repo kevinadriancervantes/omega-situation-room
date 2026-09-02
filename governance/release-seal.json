@@ -2,11 +2,14 @@
   "schema": "omega.situation-room.release-seal.v1",
   "classification": "QUALIFIED_PUBLIC_EVALUATION_CANDIDATE",
   "seal_algorithm": "sha256(UTF-8 bytes of release-manifest.json)",
-  "manifest_sha256": "df894474dcfd5e96d2ea47d26fe88fdddb219fcddb683371adcec4b829672818",
+  "manifest_sha256": "f7146fa269739b5c07b333c1d7ea78cc9a426212016477108bd28375acb8e4e8",
   "public_microsite_status": "ACTIVE",
-  "public_microsite_url": "https://omega-situation-room.vercel.app/",
+  "public_microsite_url": "https://omega.midex.app/",
+  "canonical_public_microsite_status": "ACTIVE",
+  "canonical_public_microsite_url": "https://omega.midex.app/",
+  "vercel_project_url": "https://omega-situation-room.vercel.app/",
   "qualified_preview_status": "ACTIVE",
   "preview_deployment_status": "ACTIVE",
-  "custom_domain_status": "NOT_ATTACHED",
+  "custom_domain_status": "ATTACHED_AND_QUALIFIED",
   "chinatalk_submission_status": "NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED"
 }

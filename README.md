@@ -136,19 +136,22 @@ submission/deployment status.
 CANDIDATE_CLASSIFICATION = QUALIFIED_PUBLIC_EVALUATION_CANDIDATE
 REPOSITORY_ROLE = QUALIFIED_PUBLIC_METHODOLOGY_AND_EVIDENCE_SNAPSHOT
 PUBLIC_MICROSITE_STATUS = ACTIVE
-PUBLIC_MICROSITE_URL = https://omega-situation-room.vercel.app/
+PUBLIC_MICROSITE_URL = https://omega.midex.app/
+CANONICAL_PUBLIC_MICROSITE_STATUS = ACTIVE
+CANONICAL_PUBLIC_MICROSITE_URL = https://omega.midex.app/
+VERCEL_PROJECT_URL = https://omega-situation-room.vercel.app/
 QUALIFIED_PREVIEW_STATUS = ACTIVE
 PREVIEW_DEPLOYMENT_STATUS = ACTIVE
-CUSTOM_DOMAIN_STATUS = NOT_ATTACHED
+CUSTOM_DOMAIN_STATUS = ATTACHED_AND_QUALIFIED
 CHINATALK_SUBMISSION_STATUS = NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED
 ```
 
 The GitHub repository is a public methodology and evidence artifact. A public
-Vercel microsite is active at the generated project URL, with the qualified
-preview state retained as an active reference. The custom domain is not
-attached. The ChinaTalk submission window is closed and this artifact was not
-submitted; the experiment remains proposed and no validated strategic result
-is claimed.
+microsite is canonical at https://omega.midex.app/. The Vercel project URL
+remains a valid fallback and audit surface, with the qualified preview state
+retained as an active reference. The ChinaTalk submission window is closed and
+this artifact was not submitted; the experiment remains proposed and no
+validated strategic result is claimed.
 
 ## Claim index
 

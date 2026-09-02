@@ -11,9 +11,12 @@
   "private_git_history_included": false,
   "violations": [],
   "public_microsite_status": "ACTIVE",
-  "public_microsite_url": "https://omega-situation-room.vercel.app/",
+  "public_microsite_url": "https://omega.midex.app/",
+  "canonical_public_microsite_status": "ACTIVE",
+  "canonical_public_microsite_url": "https://omega.midex.app/",
+  "vercel_project_url": "https://omega-situation-room.vercel.app/",
   "qualified_preview_status": "ACTIVE",
   "preview_deployment_status": "ACTIVE",
-  "custom_domain_status": "NOT_ATTACHED",
+  "custom_domain_status": "ATTACHED_AND_QUALIFIED",
   "chinatalk_submission_status": "NOT_SUBMITTED / SUBMISSION_WINDOW_CLOSED"
 }

@@ -9,7 +9,7 @@ authors:
 version: "qualified-public-evaluation-candidate"
 license: MIT
 repository-code: "https://github.com/kevinadriancervantes/omega-situation-room"
-url: "https://omega-situation-room.vercel.app/"
+url: "https://omega.midex.app/"
 references:
   - type: software
     title: "civ6-mcp"
