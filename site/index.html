@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A governance-first proposal for evaluating long-horizon AI decisions.">
+    <title>Omega Situation Room — Govern the knowing–doing gap</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#evaluation-question">OMEGA / SITUATION ROOM</a>
+      <nav aria-label="Primary navigation">
+        <a href="#protocol">Protocol</a>
+        <a href="#governance-metrics">Metrics</a>
+        <a href="#provenance">Provenance</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="evaluation-question" class="hero section-wrap">
+        <p class="eyebrow">LOCAL CANDIDATE · NOT DEPLOYED · NOT SUBMITTED</p>
+        <h1>Can a strategic AI remain governable when the board changes?</h1>
+        <p class="lede">Omega proposes a measurable boundary between what a model chooses, what a runtime is authorized to do, and what the evidence can actually verify.</p>
+        <div class="status-row" aria-label="Evidence status">
+          <span class="status established">ESTABLISHED · public V1 implementation</span>
+          <span class="status qualifying">UNDER QUALIFICATION · broader runtime work</span>
+          <span class="status proposed">PROPOSED · Situation Room experiment</span>
+        </div>
+      </section>
+
+      <section id="what-omega-evaluates" class="section-wrap split">
+        <div>
+          <p class="eyebrow">THE QUESTION</p>
+          <h2>Measure the loop, not just the answer.</h2>
+        </div>
+        <div class="copy">
+          <p>Strategic evaluations often report recommendations or final outcomes. Those endpoints can hide stale state, invalid authority, unverified execution, and failures that a model narrates as success.</p>
+          <p>Omega uses Civilization VI as a bounded, stateful testbed for asking whether a model-mediated system can sense, choose, act, verify, recover, and stop honestly.</p>
+          <p class="callout"><strong>GOVERNANCE_RESULT ≠ GAME_RESULT</strong><br>A game success cannot compensate for an authority or evidence failure.</p>
+        </div>
+      </section>
+
+      <section id="status" class="section-wrap">
+        <p class="eyebrow">STATUS LADDER</p>
+        <div class="cards three">
+          <article class="card established-card">
+            <p class="card-kicker">PT-001 · PT-002 · PT-003</p>
+            <h2>PROVEN_TODAY</h2>
+            <p>Public V1 documents a coordinator, requirement gates, deterministic workers, opaque current-state candidates, verification, traces, replay, and inspection.</p>
+          </article>
+          <article class="card qualifying-card">
+            <p class="card-kicker">IQ-001 · IQ-002</p>
+            <h2>IMPLEMENTED_OR_UNDER_QUALIFICATION</h2>
+            <p>Broader authority, identity, lifecycle, evidence, supervision, recovery, and qualification mechanisms are current development work with offline boundaries.</p>
+          </article>
+          <article class="card proposed-card">
+            <p class="card-kicker">PE-001 · PE-002</p>
+            <h2>PROPOSED_CONTEST_EXPERIMENT</h2>
+            <p>The Situation Room protocol has not produced a validated public strategic result. Its governance endpoints come first.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="protocol" class="section-wrap split">
+        <div>
+          <p class="eyebrow">GOVERNED ARCHITECTURE</p>
+          <h2>Separate intent, authority, execution, and evidence.</h2>
+        </div>
+        <ol class="steps">
+          <li><span>01</span><strong>Observe</strong><small>Use fresh, identity-bound state.</small></li>
+          <li><span>02</span><strong>Select</strong><small>Choose from opaque current candidates.</small></li>
+          <li><span>03</span><strong>Execute</strong><small>Let deterministic workers own mutation.</small></li>
+          <li><span>04</span><strong>Verify</strong><small>Check the expected postcondition.</small></li>
+          <li><span>05</span><strong>Replan or stop</strong><small>Contain stale state and no progress.</small></li>
+        </ol>
+      </section>
+
+      <section id="governance-metrics" class="section-wrap">
+        <span id="metrics" class="anchor-target" aria-hidden="true"></span>
+        <p class="eyebrow">PRIMARY ENDPOINTS</p>
+        <h2>Governance metrics</h2>
+        <div class="metric-grid">
+          <div><strong>INVALID_SELECTION_REJECTION_RATE</strong><span>Reject stale or unknown choices.</span></div>
+          <div><strong>UNSAFE_ACTION_RATE</strong><span>Detect authority-boundary violations.</span></div>
+          <div><strong>POSTCONDITION_VERIFICATION_RATE</strong><span>Credit only verified effects.</span></div>
+          <div><strong>CRITICAL_SENSOR_FAIL_CLOSED_RATE</strong><span>Contain unusable critical state.</span></div>
+          <div><strong>TURN_LIFECYCLE_INTEGRITY</strong><span>Preserve native transition order.</span></div>
+          <div><strong>RECOVERY_CONTAINMENT_RATE</strong><span>Recover without stale replay.</span></div>
+          <div><strong>NO_PROGRESS_DETECTION_RATE</strong><span>Stop unbounded repetition.</span></div>
+          <div><strong>EVIDENCE_COMPLETENESS</strong><span>Make the run reconstructable.</span></div>
+          <div><strong>HUMAN_INTERVENTION_BURDEN</strong><span>Account for manual assistance.</span></div>
+        </div>
+      </section>
+
+      <section id="game-metrics" class="section-wrap split">
+        <div>
+          <p class="eyebrow">SECONDARY ENDPOINTS</p>
+          <h2>Game performance is context.</h2>
+        </div>
+        <div class="copy">
+          <p>Verified turn completion, objective progress, state advancement, game outcome, score, and victory condition can describe the bounded testbed.</p>
+          <p>They cannot establish policy correctness, real-world strategic competence, hidden beliefs, intent, or general autonomy.</p>
+        </div>
+      </section>
+
+      <section id="proposed-experiment" class="section-wrap dark-panel">
+        <p class="eyebrow">PE-001 · PE-002</p>
+        <h2>Proposed Situation Room experiment</h2>
+        <p class="lede">Fix the scenario, seed, model identity, runtime, and horizon. Then perturb freshness, sensor availability, requirements, and progress while recording whether the system rejects, contains, verifies, and discloses.</p>
+        <div class="experiment-grid">
+          <div><strong>Nominal</strong><span>Governed current-state decisions.</span></div>
+          <div><strong>Perturbed</strong><span>Stale candidates and critical sensor failures.</span></div>
+          <div><strong>Held out</strong><span>Scenario family reserved for review.</span></div>
+          <div><strong>Invalid</strong><span>Identity, authority, custody, or control failure.</span></div>
+        </div>
+        <p class="notice">THIS EXPERIMENT HAS NOT YET PRODUCED A VALIDATED PUBLIC STRATEGIC RESULT.</p>
+      </section>
+
+      <section id="limitations" class="section-wrap split">
+        <div>
+          <p class="eyebrow">LIMITS ARE RESULTS</p>
+          <h2>What this cannot show</h2>
+        </div>
+        <ul class="plain-list">
+          <li>Not complete long-horizon live autonomy.</li>
+          <li>Not general strategic competence.</li>
+          <li>Not a policy answer key or real-world forecast.</li>
+          <li>Not a Chinese-model geopolitical finding.</li>
+          <li>Not a completed ChinaTalk experiment.</li>
+        </ul>
+      </section>
+
+      <section id="provenance" class="section-wrap split">
+        <div>
+          <p class="eyebrow">PROVENANCE</p>
+          <h2>Built on a credited foundation.</h2>
+        </div>
+        <div class="copy">
+          <p>Omega uses or derives from <a href="https://github.com/lmwilki/civ6-mcp">civ6-mcp</a>, the MIT-licensed Civilization VI interaction foundation authored by Liam Wilkinson.</p>
+          <p>Omega-specific governed-runtime and evaluation work is distinguished from that foundation. Omega did not author civ6-mcp or CivBench.</p>
+          <p><a href="https://github.com/kevinadriancervantes/omega">Existing public Omega V1 implementation</a></p>
+        </div>
+      </section>
+
+      <section id="reproducibility" class="section-wrap dark-panel compact-panel">
+        <p class="eyebrow">LOCAL RELEASE CONTROL</p>
+        <h2>Reproducible by inspection.</h2>
+        <p>The candidate includes a standard-library, read-only verifier for allowlist exactness, hashes, privacy markers, provenance, claim IDs, and site structure.</p>
+        <code>python reproducibility/verify_public_release.py</code>
+        <p class="small-note">Target: omega.midex.app · status: NOT_DEPLOYED · ChinaTalk: NOT_SUBMITTED</p>
+      </section>
+    </main>
+
+    <footer class="site-footer section-wrap">
+      <span>OMEGA / SITUATION ROOM · LOCAL QUALIFIED CANDIDATE</span>
+      <span>Kevin Cervantes · 2026</span>
+    </footer>
+  </body>
+</html>

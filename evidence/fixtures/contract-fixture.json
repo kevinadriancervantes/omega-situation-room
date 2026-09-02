@@ -1,0 +1,28 @@
+{
+  "schema": "omega.situation-room.safe-contract-fixture.v1",
+  "fixture_type": "DERIVED_IMPLEMENTATION_EXAMPLE",
+  "status": "NOT_LIVE_EXPERIMENTAL_EVIDENCE",
+  "case": "stale_current_snapshot_selection",
+  "before": {
+    "snapshot": "snapshot-A",
+    "turn": 8,
+    "candidate": "opaque-choice-17",
+    "candidate_scope": "snapshot-A"
+  },
+  "intervening_state": {
+    "snapshot": "snapshot-B",
+    "turn": 8,
+    "candidate_scope": "snapshot-B"
+  },
+  "expected_disposition": {
+    "selection": "REJECTED_AS_STALE",
+    "mutation_committed": false,
+    "stale_selection_replayed": false,
+    "next_step": "reobserve_and_rebuild_candidates"
+  },
+  "origin": "current Omega implementation behavior and tests at the Phase-1 source snapshot",
+  "derivation": "sanitized contract summary; no raw trace copied",
+  "claim_supported": ["PT-002", "IQ-001"],
+  "privacy": "PUBLIC_SAFE",
+  "qualification": "IMPLEMENTATION_EXAMPLE_NOT_LIVE_RESULT"
+}

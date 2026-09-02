@@ -1,0 +1,60 @@
+{
+  "schema": "omega.situation-room.release-manifest.v1",
+  "candidate_id": "OMEGA_SITUATION_ROOM_LOCAL_QUALIFIED_CANDIDATE",
+  "classification": "LOCAL_QUALIFIED_CANDIDATE",
+  "created_at": "2026-09-01T20:17:25.6997279-07:00",
+  "source_snapshot": "c50afd3e9ebfc18d5bd7a32165710c30aa5ff620",
+  "source_branch_at_cutoff": "work/e133-autonomous-experiment-supervisor",
+  "existing_public_omega": {
+    "repository": "https://github.com/kevinadriancervantes/omega",
+    "head_at_phase_1": "8c7f142cbd844aa3ea14cbbf4cf153f78cd55f35",
+    "v1_tag": "v1.0.0",
+    "v1_tag_commit": "4a18f48592fcd32190ad0b3ce15e02acbeb512f1"
+  },
+  "construction": {
+    "method": "empty_tree_plus_explicit_positive_selection",
+    "source_code_exported_wholesale": false,
+    "raw_private_evidence_exported": false,
+    "proprietary_civilization_vi_assets_exported": false,
+    "private_git_history_exported": false
+  },
+  "status": {
+    "submission_status": "NOT_SUBMITTED",
+    "deployment_status": "NOT_DEPLOYED",
+    "microsite_target": "https://omega.midex.app"
+  },
+  "public_history": {
+    "current_local_history": "NOT_PUBLIC_SAFE",
+    "reason": "The preserved local candidate history contains non-public author and committer metadata.",
+    "recommended_projection": "FRESH_ONE_COMMIT_PUBLIC_PROJECTION",
+    "public_identity": "HUMAN_APPROVED_GITHUB_NOREPLY_REQUIRED"
+  },
+  "payload_hash_algorithm": "sha256(relative-posix-path + NUL + file-sha256 + LF, sorted by path)",
+  "manifest_and_seal_excluded_from_payload_entries": true,
+  "payload_tree_sha256": "d29df0c63f100e7309a627899be5735a1f083f31066732f5339a7a57d8e73b3b",
+  "payload_files": [
+    {"path": "CITATION.cff", "sha256": "47d401f53d97987429658fefb73b06113199fd113ac7dbcd683eee3652368004", "classification": "GENERATED"},
+    {"path": "LICENSE", "sha256": "95e0e01053550bf8780d0872e312033eb0901a2c42993683e948b8368cac866d", "classification": "GENERATED"},
+    {"path": "README.md", "sha256": "e3b8d478d1e3719a51ae26c661ca762f88d7afcf694ebe98a9b694ea1368328c", "classification": "GENERATED"},
+    {"path": "THIRD_PARTY_NOTICES.md", "sha256": "ec91bb01bd4fcf89f9d5177212db3fa270d75735d83d7525df416e587eddd76d", "classification": "GENERATED"},
+    {"path": "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json", "sha256": "d063a34465397099bba2c07dbafb95c50ee319c3b396470fe292ea422ac3eda5", "classification": "DERIVED"},
+    {"path": "evidence/README.md", "sha256": "c949b72d2b2ab83317b07d45e527c30c301c2afeb8873d6b475a812876be1410", "classification": "DERIVED"},
+    {"path": "evidence/STATUS_MATRIX.json", "sha256": "46b95757d2fe7166c75a389354296597a761c8ff19fb80026a5533d3e59eb935", "classification": "DERIVED"},
+    {"path": "evidence/fixtures/contract-fixture.json", "sha256": "a95df27feea723df3ae5d2ddd6d0e9ca532811a9ec1eaaca483ba56367cc4157", "classification": "DERIVED"},
+    {"path": "governance/CLAIMS.md", "sha256": "8cf8cb29b3e87b3bddd7be76a1d063403338f60e816d41a590811de725c38841", "classification": "GENERATED"},
+    {"path": "governance/claim-surface-map.json", "sha256": "f47e9117cdc4fd4e25b5ca2b6a2b7775b403388dd81279ce81078149be0b11c7", "classification": "GENERATED"},
+    {"path": "governance/privacy-policy.md", "sha256": "ab100efcec91bcccbe7f351d9464092fb330ffe4774b9bb12b55d0c816436ffa", "classification": "GENERATED"},
+    {"path": "governance/privacy-receipt.json", "sha256": "2c4930fcbbc7cc2f57893ed3e20bb1b540e058fbfac064e021b444fd1f286488", "classification": "GENERATED"},
+    {"path": "governance/public-release-allowlist.json", "sha256": "f8c90195da5e3880bfc9cfa9a264eba63a4db6c224623fb2ba81bd308f419cbb", "classification": "GENERATED"},
+    {"path": "protocol/ADJUDICATION.md", "sha256": "c8599b5b343fdd942f3a1618cf5789deef835029f0e13838af53d3e8cd28a309", "classification": "GENERATED"},
+    {"path": "protocol/EVAL_SPEC.md", "sha256": "60fe785c5c0dfa04632956089f965b032b0904eb37c4a02017c8de20d5be0af6", "classification": "GENERATED"},
+    {"path": "protocol/EXPERIMENT_DESIGN.md", "sha256": "c3245b093fd83c7e249ba310acecb1a1d3e69cdaa11f70321df44dccdfb37498", "classification": "GENERATED"},
+    {"path": "protocol/LIMITATIONS.md", "sha256": "f7fd390850ab8bfe1eb433e3f70d69873994bb17f7a5a63852950de3000da7a3", "classification": "GENERATED"},
+    {"path": "protocol/METRICS.md", "sha256": "ed2bb7cbb00a6805f8c528f6d14891e78965773a057b83cc233960f94bcd2886", "classification": "GENERATED"},
+    {"path": "reproducibility/README.md", "sha256": "c69e22f210cd847f590a14d1fc6b79a0f720213a9994b7d2b249801c71398cbf", "classification": "GENERATED"},
+    {"path": "reproducibility/verify_public_release.py", "sha256": "53091eb1975442f563d7718a6667a808c399fb6d1bee59c3281bdd70888bc9ec", "classification": "GENERATED"},
+    {"path": "site/app.js", "sha256": "a98b41046275c076979eafe3aa3c67c3cfa295bc4395ce855d0687190fca2bd1", "classification": "GENERATED"},
+    {"path": "site/index.html", "sha256": "d798d2163ce3b0b0b7a5b7f83653dc17730dba38aff64d9c5da6ba4bc09ab04d", "classification": "GENERATED"},
+    {"path": "site/styles.css", "sha256": "71ec2a0242b476da0670e7c4c8a63d3e0d4c99b42831635e29c1a09c8484ce49", "classification": "GENERATED"}
+  ]
+}

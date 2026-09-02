@@ -1,0 +1,15 @@
+{
+  "schema": "omega.situation-room.privacy-receipt.v1",
+  "candidate_id": "OMEGA_SITUATION_ROOM_LOCAL_QUALIFIED_CANDIDATE",
+  "scan_mode": "bounded deterministic candidate-tree audit",
+  "status": "PASS",
+  "raw_runtime_evidence_included": false,
+  "raw_model_or_provider_responses_included": false,
+  "credentials_or_authentication_material_included": false,
+  "machine_local_identity_included": false,
+  "proprietary_game_assets_included": false,
+  "private_git_history_included": false,
+  "violations": [],
+  "submission_status": "NOT_SUBMITTED",
+  "deployment_status": "NOT_DEPLOYED"
+}

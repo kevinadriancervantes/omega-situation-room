@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Omega Situation Room"
+message: "Cite the local qualified candidate only for its stated methodology and evidence boundary."
+type: software
+authors:
+  - family-names: Cervantes
+    given-names: Kevin
+    affiliation: Independent
+version: "local-qualified-candidate"
+license: MIT
+references:
+  - type: software
+    title: "civ6-mcp"
+    authors:
+      - family-names: Wilkinson
+        given-names: Liam
+    url: "https://github.com/lmwilki/civ6-mcp"

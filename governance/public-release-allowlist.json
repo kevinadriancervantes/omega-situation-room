@@ -1,0 +1,42 @@
+{
+  "schema": "omega.situation-room.public-release-allowlist.v1",
+  "candidate_id": "OMEGA_SITUATION_ROOM_LOCAL_QUALIFIED_CANDIDATE",
+  "status": "LOCAL_QUALIFIED_CANDIDATE",
+  "paths": [
+    "CITATION.cff",
+    "LICENSE",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md",
+    "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json",
+    "evidence/README.md",
+    "evidence/STATUS_MATRIX.json",
+    "evidence/fixtures/contract-fixture.json",
+    "governance/CLAIMS.md",
+    "governance/claim-surface-map.json",
+    "governance/privacy-policy.md",
+    "governance/privacy-receipt.json",
+    "governance/public-release-allowlist.json",
+    "governance/release-manifest.json",
+    "governance/release-seal.json",
+    "protocol/ADJUDICATION.md",
+    "protocol/EVAL_SPEC.md",
+    "protocol/EXPERIMENT_DESIGN.md",
+    "protocol/LIMITATIONS.md",
+    "protocol/METRICS.md",
+    "reproducibility/README.md",
+    "reproducibility/verify_public_release.py",
+    "site/app.js",
+    "site/index.html",
+    "site/styles.css"
+  ],
+  "excluded_by_default": [
+    "raw_runtime_evidence",
+    "raw_model_or_provider_responses",
+    "machine_local_identity",
+    "credentials_and_authentication_material",
+    "private_operational_records",
+    "proprietary_game_assets",
+    "private_git_history",
+    "unlisted_files"
+  ]
+}

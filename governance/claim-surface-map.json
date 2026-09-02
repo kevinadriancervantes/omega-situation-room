@@ -1,0 +1,48 @@
+{
+  "schema": "omega.situation-room.claim-surface-map.v1",
+  "authoritative_ledger": "governance/CLAIMS.md",
+  "claims": [
+    {
+      "id": "PT-001",
+      "ledger_entry": "PT-001",
+      "asserted_surfaces": ["README.md", "site/index.html", "evidence/STATUS_MATRIX.json", "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json"],
+      "supporting_evidence": ["https://github.com/kevinadriancervantes/omega"]
+    },
+    {
+      "id": "PT-002",
+      "ledger_entry": "PT-002",
+      "asserted_surfaces": ["README.md", "site/index.html", "evidence/STATUS_MATRIX.json", "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json", "evidence/fixtures/contract-fixture.json"],
+      "supporting_evidence": ["https://github.com/kevinadriancervantes/omega"]
+    },
+    {
+      "id": "PT-003",
+      "ledger_entry": "PT-003",
+      "asserted_surfaces": ["README.md", "site/index.html", "evidence/STATUS_MATRIX.json", "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json"],
+      "supporting_evidence": ["https://github.com/kevinadriancervantes/omega"]
+    },
+    {
+      "id": "IQ-001",
+      "ledger_entry": "IQ-001",
+      "asserted_surfaces": ["README.md", "site/index.html", "evidence/STATUS_MATRIX.json", "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json", "evidence/fixtures/contract-fixture.json"],
+      "supporting_evidence": ["evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json"]
+    },
+    {
+      "id": "IQ-002",
+      "ledger_entry": "IQ-002",
+      "asserted_surfaces": ["README.md", "site/index.html", "evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json"],
+      "supporting_evidence": ["evidence/IMPLEMENTATION_QUALIFICATION_SUMMARY.json"]
+    },
+    {
+      "id": "PE-001",
+      "ledger_entry": "PE-001",
+      "asserted_surfaces": ["README.md", "site/index.html", "evidence/STATUS_MATRIX.json", "protocol/EVAL_SPEC.md", "protocol/EXPERIMENT_DESIGN.md"],
+      "supporting_evidence": ["protocol/EVAL_SPEC.md", "protocol/EXPERIMENT_DESIGN.md"]
+    },
+    {
+      "id": "PE-002",
+      "ledger_entry": "PE-002",
+      "asserted_surfaces": ["README.md", "site/index.html", "evidence/STATUS_MATRIX.json", "protocol/METRICS.md", "protocol/EXPERIMENT_DESIGN.md"],
+      "supporting_evidence": ["protocol/METRICS.md", "protocol/EXPERIMENT_DESIGN.md"]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "omega.situation-room.status-matrix.v1",
+  "status": "DERIVED_IMPLEMENTATION_SUMMARY",
+  "items": [
+    {
+      "id": "PT-001",
+      "capability": "coordinator, requirement gates, deterministic workers, post-action verification",
+      "status": "PROVEN_TODAY",
+      "origin": "existing public Omega V1 repository",
+      "derivation": "public-source review",
+      "privacy": "PUBLIC_SAFE",
+      "qualification": "PUBLIC_IMPLEMENTATION"
+    },
+    {
+      "id": "PT-002",
+      "capability": "current opaque candidates and model boundary without raw game identifiers or execution",
+      "status": "PROVEN_TODAY",
+      "origin": "existing public Omega V1 architecture and runtime documentation",
+      "derivation": "public-source review",
+      "privacy": "PUBLIC_SAFE",
+      "qualification": "PUBLIC_IMPLEMENTATION"
+    },
+    {
+      "id": "PT-003",
+      "capability": "structured traces, replay, inspection, trace-only evaluation",
+      "status": "PROVEN_TODAY",
+      "origin": "existing public Omega V1 documentation",
+      "derivation": "public-source review",
+      "privacy": "PUBLIC_SAFE",
+      "qualification": "PUBLIC_IMPLEMENTATION"
+    },
+    {
+      "id": "IQ-001",
+      "capability": "authority, identity, lifecycle, evidence, supervision, recovery, and qualification contracts",
+      "status": "IMPLEMENTED_OR_UNDER_QUALIFICATION",
+      "origin": "Phase-1 source snapshot and named qualification records",
+      "derivation": "bounded document and source inspection",
+      "privacy": "DERIVED_SAFE_SUMMARY",
+      "qualification": "OFFLINE_OR_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "IQ-002",
+      "capability": "offline qualification boundary distinct from live gameplay or scientific validity",
+      "status": "IMPLEMENTED_OR_UNDER_QUALIFICATION",
+      "origin": "Phase-1 qualification boundary",
+      "derivation": "status extraction and claim qualification",
+      "privacy": "DERIVED_SAFE_SUMMARY",
+      "qualification": "OFFLINE_OR_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "PE-001",
+      "capability": "governance-first long-horizon Situation Room experiment",
+      "status": "PROPOSED_CONTEST_EXPERIMENT",
+      "origin": "candidate protocol",
+      "derivation": "methodology design",
+      "privacy": "PUBLIC_SAFE",
+      "qualification": "NOT_YET_RUN"
+    },
+    {
+      "id": "PE-002",
+      "capability": "governance endpoints primary and game-performance endpoints secondary",
+      "status": "PROPOSED_CONTEST_EXPERIMENT",
+      "origin": "candidate protocol",
+      "derivation": "methodology design",
+      "privacy": "PUBLIC_SAFE",
+      "qualification": "NOT_YET_RUN"
+    }
+  ]
+}
