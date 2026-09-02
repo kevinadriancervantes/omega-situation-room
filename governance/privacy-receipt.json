@@ -1,6 +1,6 @@
 {
   "schema": "omega.situation-room.privacy-receipt.v1",
-  "candidate_id": "OMEGA_SITUATION_ROOM_LOCAL_QUALIFIED_CANDIDATE",
+  "candidate_id": "OMEGA_SITUATION_ROOM_QUALIFIED_CONTEST_CANDIDATE",
   "scan_mode": "bounded deterministic candidate-tree audit",
   "status": "PASS",
   "raw_runtime_evidence_included": false,

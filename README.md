@@ -1,6 +1,6 @@
 # Omega Situation Room
 
-## Local qualified candidate — not deployed, not submitted
+## QUALIFIED CONTEST CANDIDATE — NOT DEPLOYED, NOT SUBMITTED
 
 Omega Situation Room is a proposed methodology package for evaluating whether
 model-mediated systems remain governable during long-horizon decisions under
@@ -119,7 +119,7 @@ Omega did not author `civ6-mcp` or CivBench. See `LICENSE` and
 
 ## Reproducibility
 
-The local candidate verifier uses only the Python standard library and is
+The candidate verifier uses only the Python standard library and is
 read-only:
 
 ```text
@@ -133,14 +133,16 @@ submission/deployment status.
 ## Contest and microsite status
 
 ```text
-CONTEST_SNAPSHOT = LOCAL_QUALIFIED_CANDIDATE
+CONTEST_SNAPSHOT = QUALIFIED_CONTEST_CANDIDATE
+REPOSITORY_ROLE = QUALIFIED_CONTEST_FACING_METHODOLOGY_AND_EVIDENCE_SNAPSHOT
 MICROSITE_TARGET = https://omega.midex.app
 MICROSITE_STATUS = NOT_DEPLOYED
 SUBMISSION_STATUS = NOT_SUBMITTED
 ```
 
-No public repository, Vercel project, domain mapping, or ChinaTalk submission
-is created by this candidate.
+The GitHub repository is the contest-facing methodology and evidence artifact.
+No Vercel project, domain mapping, or ChinaTalk submission is created by this
+candidate.
 
 ## Claim index
 

@@ -1,8 +1,8 @@
 {
   "schema": "omega.situation-room.release-seal.v1",
-  "classification": "LOCAL_QUALIFIED_CANDIDATE",
+  "classification": "QUALIFIED_CONTEST_CANDIDATE",
   "seal_algorithm": "sha256(UTF-8 bytes of release-manifest.json)",
-  "manifest_sha256": "d793d5eb736812d26dc814bd3a505b71e8c64f2041012b550f4958ae12dd7c32",
+  "manifest_sha256": "e4408ed35cf2ec003d13cb484903d5be5eeaa3e98ce72a42731d9762f8015202",
   "submission_status": "NOT_SUBMITTED",
   "deployment_status": "NOT_DEPLOYED"
 }

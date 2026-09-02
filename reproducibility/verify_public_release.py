@@ -1,4 +1,4 @@
-"""Read-only verifier for the Omega Situation Room local candidate."""
+"""Read-only verifier for the Omega Situation Room qualified contest candidate."""
 
 from __future__ import annotations
 
@@ -11,6 +11,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+QUALIFIED_CANDIDATE_ID = "OMEGA_SITUATION_ROOM_QUALIFIED_CONTEST_CANDIDATE"
+QUALIFIED_CANDIDATE_STATUS = "QUALIFIED_CONTEST_CANDIDATE"
+PUBLIC_REPOSITORY = "https://github.com/kevinadriancervantes/omega-situation-room"
 ALLOWLIST = ROOT / "governance" / "public-release-allowlist.json"
 MANIFEST = ROOT / "governance" / "release-manifest.json"
 SEAL = ROOT / "governance" / "release-seal.json"
@@ -136,10 +139,15 @@ def main() -> int:
     manifest_hash = file_sha256(MANIFEST)
     if seal.get("manifest_sha256") != manifest_hash:
         fail(errors, "release seal does not bind the release manifest")
-    if manifest.get("classification") != "LOCAL_QUALIFIED_CANDIDATE":
-        fail(errors, "manifest classification is not LOCAL_QUALIFIED_CANDIDATE")
-    if seal.get("classification") != "LOCAL_QUALIFIED_CANDIDATE":
-        fail(errors, "seal classification is not LOCAL_QUALIFIED_CANDIDATE")
+    for label, document in (("allowlist", allow), ("manifest", manifest), ("privacy receipt", privacy)):
+        if document.get("candidate_id") != QUALIFIED_CANDIDATE_ID:
+            fail(errors, f"{label} candidate ID is not {QUALIFIED_CANDIDATE_ID}")
+    if allow.get("status") != QUALIFIED_CANDIDATE_STATUS:
+        fail(errors, "allowlist status is not QUALIFIED_CONTEST_CANDIDATE")
+    if manifest.get("classification") != QUALIFIED_CANDIDATE_STATUS:
+        fail(errors, "manifest classification is not QUALIFIED_CONTEST_CANDIDATE")
+    if seal.get("classification") != QUALIFIED_CANDIDATE_STATUS:
+        fail(errors, "seal classification is not QUALIFIED_CONTEST_CANDIDATE")
     if manifest.get("status", {}).get("submission_status") != "NOT_SUBMITTED":
         fail(errors, "manifest submission status is not NOT_SUBMITTED")
     if manifest.get("status", {}).get("deployment_status") != "NOT_DEPLOYED":
@@ -148,11 +156,22 @@ def main() -> int:
         fail(errors, "seal status is not NOT_SUBMITTED / NOT_DEPLOYED")
     if privacy.get("status") != "PASS" or privacy.get("violations") != []:
         fail(errors, "privacy receipt is not a clean PASS")
+    privacy_requirements = {
+        "raw_runtime_evidence_included": False,
+        "raw_model_or_provider_responses_included": False,
+        "credentials_or_authentication_material_included": False,
+        "machine_local_identity_included": False,
+        "proprietary_game_assets_included": False,
+        "private_git_history_included": False,
+    }
+    for key, expected in privacy_requirements.items():
+        if privacy.get(key) is not expected:
+            fail(errors, f"privacy receipt is not false for {key}")
 
     # CFF 1.2.0 semantic checks that do not require installing a parser.
     if not re.search(r"(?m)^cff-version:\s*1\.2\.0\s*$", cff):
         fail(errors, "CFF version is not 1.2.0")
-    for field in ("title:", "message:", "type: software", "authors:", "version:", "license: MIT", "references:"):
+    for field in ("title:", "message:", "type: software", "authors:", "version:", "license: MIT", "repository-code:", "references:"):
         if field not in cff:
             fail(errors, f"CFF required field missing: {field}")
     root_keys = re.findall(r"(?m)^([A-Za-z][A-Za-z0-9-]*):", cff)
@@ -173,9 +192,10 @@ def main() -> int:
         if marker not in reference_block:
             fail(errors, f"CFF upstream reference marker missing: {marker}")
     if re.search(r"(?m)^date-released:", cff):
-        fail(errors, "CFF date-released is forbidden for an unreleased local candidate")
-    if re.search(r"(?m)^repository-code:", cff):
-        fail(errors, "CFF repository-code must be deferred until a candidate repository exists")
+        fail(errors, "CFF date-released is forbidden before an authorized release")
+    repository_match = re.search(r"(?m)^repository-code:\s*[\"']?([^\"'\s]+)[\"']?\s*$", cff)
+    if not repository_match or repository_match.group(1) != PUBLIC_REPOSITORY:
+        fail(errors, "CFF repository-code is not the qualified contest repository")
     if re.search(r"(?im)^\s*url:\s*https://omega\.midex\.app\s*$", cff):
         fail(errors, "CFF represents the undeployed omega.midex.app as an existing URL")
     if re.search(r"(?i)(TBD|REPLACE_ME|example\.com)", cff):
@@ -224,9 +244,8 @@ def main() -> int:
             if isinstance(item, str) and not item.startswith(("http://", "https://")) and item not in physical:
                 fail(errors, f"claim supporting evidence is not a candidate file or URL: {claim_id} / {item}")
 
-    # Read local Git metadata without exposing addresses. A non-public local
-    # history is acceptable only when the manifest explicitly requires a
-    # fresh public projection before any remote publication.
+    # Read local Git metadata without exposing addresses. The qualified
+    # contest candidate must contain only GitHub noreply identities.
     git_history_result = "NOT_CHECKED"
     if (ROOT / ".git").exists():
         git_result = subprocess.run(
@@ -244,16 +263,8 @@ def main() -> int:
                 for email in fields[1:3]:
                     if email and not email.lower().endswith("@users.noreply.github.com"):
                         non_public_identity = True
-            policy = manifest.get("public_history", {})
             if non_public_identity:
-                if (
-                    policy.get("current_local_history") != "NOT_PUBLIC_SAFE"
-                    or policy.get("recommended_projection") != "FRESH_ONE_COMMIT_PUBLIC_PROJECTION"
-                    or policy.get("public_identity") != "HUMAN_APPROVED_GITHUB_NOREPLY_REQUIRED"
-                ):
-                    fail(errors, "non-public Git identity requires an explicit fresh public-history policy")
-                else:
-                    git_history_result = "PASS_FRESH_PUBLIC_PROJECTION_REQUIRED"
+                fail(errors, "non-public Git identity detected in qualified contest history")
             else:
                 git_history_result = "PASS_PUBLIC_NOREPLY_IDENTITIES"
 
@@ -269,6 +280,7 @@ def main() -> int:
     bearer = re.compile(r"\bBearer\s+[A-Za-z0-9._-]{8,}", re.IGNORECASE)
     cookie = re.compile(r"\bCookie\s*:\s*\S+", re.IGNORECASE)
     private_key = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
+    email_address = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE)
     ipv4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
     mac = re.compile(r"\b[0-9A-F]{2}(?::[0-9A-F]{2}){5}\b", re.IGNORECASE)
     marker_fragments = ("private" + "-archive", "." + "work", "omega" + "_lab")
@@ -286,6 +298,9 @@ def main() -> int:
         for pattern, label in checks:
             if pattern.search(text):
                 fail(errors, f"{label} detected in {path_text}")
+        for address in email_address.findall(text):
+            if not address.lower().endswith("@users.noreply.github.com"):
+                fail(errors, f"private email address detected in {path_text}")
         for match in ipv4.findall(text):
             if not match.startswith("127.") and match not in {"0.0.0.0", "255.255.255.255"}:
                 fail(errors, f"non-loopback IP-like value detected in {path_text}")
@@ -296,6 +311,11 @@ def main() -> int:
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     site = (ROOT / "site/index.html").read_text(encoding="utf-8")
+    if "QUALIFIED CONTEST CANDIDATE" not in readme or "QUALIFIED CONTEST CANDIDATE" not in site:
+        fail(errors, "qualified contest candidate status is missing from README and/or site")
+    for stale in ("OMEGA_SITUATION_ROOM_LOCAL_QUALIFIED_CANDIDATE", "LOCAL_QUALIFIED_CANDIDATE", "LOCAL CANDIDATE"):
+        if stale in readme or stale in site:
+            fail(errors, f"stale current-state candidate marker remains in README or site: {stale}")
     for marker in (
         "PROVEN_TODAY",
         "IMPLEMENTED_OR_UNDER_QUALIFICATION",
@@ -323,6 +343,18 @@ def main() -> int:
     ):
         if marker not in site:
             fail(errors, f"microsite section missing: {marker}")
+
+    public_history = manifest.get("public_history", {})
+    expected_history = {
+        "repository": PUBLIC_REPOSITORY,
+        "current_history_status": "PUBLIC_SAFE_NOREPLY_HISTORY",
+        "projection_method": "FRESH_ONE_COMMIT_PROJECTION_FROM_PHASE_2R_QUALIFIED_TREE",
+        "initial_public_safe_commit": "c65f68d5a04c11fd7a135b3a6e8dfb07ba791298",
+        "public_identity_status": "HUMAN_CONFIRMED_GITHUB_NOREPLY",
+    }
+    for key, expected in expected_history.items():
+        if public_history.get(key) != expected:
+            fail(errors, f"public history metadata mismatch: {key}")
 
     if errors:
         print("FAIL")

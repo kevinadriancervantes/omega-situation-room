@@ -1,7 +1,7 @@
 {
   "schema": "omega.situation-room.public-release-allowlist.v1",
-  "candidate_id": "OMEGA_SITUATION_ROOM_LOCAL_QUALIFIED_CANDIDATE",
-  "status": "LOCAL_QUALIFIED_CANDIDATE",
+  "candidate_id": "OMEGA_SITUATION_ROOM_QUALIFIED_CONTEST_CANDIDATE",
+  "status": "QUALIFIED_CONTEST_CANDIDATE",
   "paths": [
     "CITATION.cff",
     "LICENSE",
